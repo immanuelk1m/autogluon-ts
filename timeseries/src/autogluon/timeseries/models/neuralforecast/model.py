@@ -84,7 +84,7 @@ class NeuralForecastModel(AbstractTimeSeriesModel):
     def _get_default_hyperparameters(self) -> dict[str, Any]:
         return {
             "model_name": self.nf_model_name or "NHITS",
-            "python_executable": sys.executable,
+            "python_executable": os.environ.get("AUTOGLUON_NF_PYTHON", sys.executable),
             "validation_size": 0,
             "calibration_windows": 2,
             "calibration_step_size": None,
